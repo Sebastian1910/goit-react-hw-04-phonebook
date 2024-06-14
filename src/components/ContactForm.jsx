@@ -28,7 +28,7 @@ function ContactForm({ addContact }) {
   };
 
   const validateNumber = (number) => {
-    const numberPattern = /^[0-9 -]+$/;
+    const numberPattern = /^[0-9 ]+$/;
     return numberPattern.test(number);
   };
 
