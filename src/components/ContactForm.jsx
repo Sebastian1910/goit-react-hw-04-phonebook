@@ -7,9 +7,29 @@ function ContactForm({ addContact }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!validateName(name)) {
+      alert("Please enter both first and last name.");
+      return;
+    }
+    if (!validateNumber(number)) {
+      alert(
+        "Please enter a valid phone number. Only digits, spaces, and underscores are allowed.",
+      );
+      return;
+    }
     addContact(name, number);
     setName("");
     setNumber("");
+  };
+
+  const validateName = (name) => {
+    const parts = name.trim().split(" ");
+    return parts.length >= 2 && parts.every((part) => part);
+  };
+
+  const validateNumber = (number) => {
+    const numberPattern = /^[0-9 -]+$/;
+    return numberPattern.test(number);
   };
 
   return (
